@@ -2,7 +2,6 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Reserve
 from django.http import Http404
-
 # mappers to decode the post str to number
 mapper_start_time = {
     "09:00":0,"09:30":1,"10:00":2,"10:30":3,"11:00":4,"11:30":5,"12:00":6,"12:30":7,"13:00":8,"13:30":9,"14:00":10,"14:30":11,
