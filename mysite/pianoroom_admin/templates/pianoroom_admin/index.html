@@ -28,7 +28,7 @@
     </nav>
 
 <!-- page header -->
-    <div class="jumbotron" style="height:200px">
+    <div class="jumbotron" style="height:250px">
       <div class="container">
         <div class="page-header">
           <h1>Piano Room Register</h1>
@@ -37,91 +37,34 @@
     </div>
 
 
+      <div class="row" style="margin:-30px -1px 0px -1px">
+        {% if status == 0 %}
+          <div class="alert alert-info text-center" role="alert">{{ message }}</div>
+        {% elif status == 1 %}
+          <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+        {% else %}
+        <div class="alert alert-danger text-center" role="alert">{{ message }}</div>
+        {% endif %}
+      </div>
 
-    <div class="container" style="margin:20px 30px 20px 30px">
+
+
+    <div class="container" style="margin:10px 20px 0px 20px">
       <!-- use js and id to control the progress bar!!! -->
       <!-- I want to use vue.js as the tool -->
       <!-- use a jquery tool called popover -->
       <div class="row">
-        <div class="progress" style="height:50px">
-          <div id="test" class="progress-bar progress-bar-success" onclick="$('#test').popover('show')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." style="width: 4.1667%">
-          </div>
+        <div class="progress" style="height:40px">
 
+          {% for item in timeline %}
+            <!-- if being occupied -->
+            {% if item.0 %}
+            <a id="test" tabindex="0" role="button" class="progress-bar progress-bar-primary" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom" data-content="It's {{ item.4 }}, {{ item.1 }} reserved during {{ item.2 }} ~ {{ item.3 }}" style="width: 4.1667% "></a>
+            {% else %}
+            <a id="test" tabindex="0" role="button" class="progress-bar progress-bar-info" data-trigger="focus" data-container="body" data-toggle="popover" data-placement="bottom" data-content="It's {{ item.4 }}, come and reserve me!" style="width: 4.1667%"></a>
+            {% endif %}
 
-          <div class="progress-bar progress-bar-warning"  style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-success" style="width: 4.1667%">
-          </div>
-
-          <div class="progress-bar progress-bar-warning" style="width: 4.1667%">
-          </div>
+          {% endfor %}
 
       </div>
 
@@ -149,7 +92,7 @@
               <h4>Start Time</h4>
             </div>
             <div class="col-sm-2" style="margin-top:10px">
-              <select class="selectpicker" name="startTime" data-width="150px" data-live-search="true">
+              <select class="selectpicker" name="startTime" data-size="8" data-width="150px" data-live-search="true">
                 <option>09:00</option>
                 <option>09:30</option>
                 <option>10:00</option>
@@ -200,7 +143,6 @@
               </div>
             </div>
           </form>
-
 
 
 

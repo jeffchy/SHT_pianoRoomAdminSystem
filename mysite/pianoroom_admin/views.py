@@ -43,10 +43,11 @@ def updateTimeLine(timeline,start_time,end_time,username):
 def index(request):
     # init the timeline
     # [isOccupied,username,starttime,endtime]
-    timeline = [[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],\
-    [0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],\
-    [0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],[0,'','',''],\
-    [0,'','',''],[0,'','',''],[0,'','',''],[0,'','','']]
+    timeline = [[0,'','','',"09:00"],[0,'','','',"09:30"],[0,'','','',"10:00"],[0,'','','',"10:30"],[0,'','','',"11:00"],\
+    [0,'','','',"11:30"],[0,'','','',"12:00"],[0,'','','',"12:30"],[0,'','','',"13:00"],[0,'','','',"13:30"],\
+    [0,'','','',"14:00"],[0,'','','',"14:30"],[0,'','','',"15:00"],[0,'','','',"15:30"],[0,'','','',"16:00"],\
+    [0,'','','',"16:30"],[0,'','','',"17:00"],[0,'','','',"17:30"],[0,'','','',"18:00"],[0,'','','',"18:30"],\
+    [0,'','','',"19:00"],[0,'','','',"19:30"],[0,'','','',"20:00"],[0,'','','',"20:30"]]
 
     # read the current state timeline
     timeline = initTimeLine(timeline)
@@ -74,6 +75,7 @@ def index(request):
                 print('occupied')
                 message = "Time conflict, someone already in there!"
                 isOccupied = 1
+                status = 2 # occupied
                 break
 
         # if it is not occupied we can save it
@@ -82,19 +84,24 @@ def index(request):
             # save it
             new_reserve = Reserve(reserver_name=username,use_text='temp',start_time=start_time,end_time=end_time)
             new_reserve.save()
+            status = 1 # 1 is the not Occupied
+            message = "Piano Room Reserved Successfully!"
 
         context = {
             'timeline':timeline,
             'message':message,
+            'status':status,
         }
         return render(request,'pianoroom_admin/index.html',context)
 
     else:
         # not a post represt
         message = "Welcome, click and reserve the piano room"
+        status = 0 # 0 is the non-post case
         context = {
             'timeline':timeline,
             'message':message,
+            'status':status,
         }
 
         return render(request,'pianoroom_admin/index.html',context)
