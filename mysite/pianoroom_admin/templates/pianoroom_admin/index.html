@@ -22,7 +22,7 @@
           <a class="navbar-brand" href="#">
             <img alt="Brand" height="20px" src="{% static 'pianoroom_admin/music.svg' %}">
           </a>
-          <p class="navbar-text">Signed in as Mark Otto</p>
+          <p class="navbar-text">Shanghaitech Club Music</p>
         </div>
       </div>
     </nav>
@@ -76,7 +76,7 @@
     </div>
 
     <div class="container">
-      <form class="" action=""{% url 'index' %}"" method="post">
+      <form class="" action="{% url 'index' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
           <div class="row">
@@ -156,7 +156,11 @@
     </div>
   </div>
 </div>
-
+  <div class="container-fluid" style="margin-top:50px">
+    <div class="text-center">
+      <a href="{% url 'index' %}">Club Music</a>  Jeff | All rights reserved
+    </div>
+  </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 
