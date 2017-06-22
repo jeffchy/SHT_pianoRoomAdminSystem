@@ -27,17 +27,22 @@
       </div>
     </nav>
 
-<!-- page header -->
-    <div class="jumbotron" style="height:250px">
-      <div class="container">
-        <div class="page-header">
-          <h1>Piano Room Register</h1>
+    <!-- page header -->
+
+      <div class="jumbotron" style="height:250px">
+        <div class="container">
+          <div class="page-header">
+            <h1>Piano Room Register</h1>
+            <blockquote>Piano room is <span class="bg-info">available</span> between 9:00 to 21:00, please enter after the <strong class="text-primary">reservation</strong></blockquote>
+          </div>
         </div>
       </div>
-    </div>
 
 
-      <div class="row" style="margin:-30px -1px 0px -1px">
+
+
+
+      <div class="row" style="margin:-31px -1px 0px -1px">
         {% if status == 0 %}
           <div class="alert alert-info text-center" role="alert">{{ message }}</div>
         {% elif status == 1 %}
@@ -164,6 +169,7 @@
     <script type="text/javascript">
       $(function () {
         $('[data-toggle="popover"]').popover()
+        $('.carousel').carousel()
       })
       // initialize the popover
     </script>
