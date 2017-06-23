@@ -13,6 +13,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-select/1.12.2/css/bootstrap-select.css">
 
+    <link rel="shortcut icon" href="{% static 'pianoroom_admin/favicon.ico' %}" type="image/x-icon"/>
   </head>
   <body>
     <!-- nav -->
@@ -47,6 +48,8 @@
           <div class="alert alert-info text-center" role="alert">{{ message }}</div>
         {% elif status == 1 %}
           <div class="alert alert-success text-center" role="alert">{{ message }}</div>
+        {% elif status == 3 %}
+          <div class="alert alert-warning text-center" role="alert">{{ message }}</div>
         {% else %}
         <div class="alert alert-danger text-center" role="alert">{{ message }}</div>
         {% endif %}

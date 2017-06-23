@@ -77,6 +77,14 @@ def index(request):
                 status = 2 # occupied
                 break
 
+        # user already have registered
+        for i in timeline:
+            if username == i[1]:
+                message = "You have already reserved!"
+                isOccupied = 1
+                status = 3 # user registered
+                break
+
         # if it is not occupied we can save it
         if not isOccupied:
             timeline = updateTimeLine(timeline,start_time,end_time,username)
